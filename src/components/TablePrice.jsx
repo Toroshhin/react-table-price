@@ -27,7 +27,7 @@ class TablePrice extends Component {
             {state.tablePrice.map(tablePriceCall => (
               <Table.Row key={tablePriceCall.id}>
                 <Table.Cell>{tablePriceCall.people}</Table.Cell>
-                <Table.Cell><InputPrice keys={tablePriceCall.id} value={tablePriceCall.price} /></Table.Cell>
+                <Table.Cell><InputPrice keys={tablePriceCall.id} /></Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
