@@ -10,24 +10,24 @@ class InputPrice extends Component {
       active: true,
       value: '1'
     };
+    const { keys } = this.props;
+  } 
 
-  }
+  onStorage = () => (
+    localStorage.setItem(this.props.keys, this.state.value)
+  )
 
   render() {
-    const { keys } = this.props;
-    const onStorage = () => {
-      localStorage.setItem(keys, this.state.value)
-    }
     return (
       <>
         <Input
-          onchange={(e) => { this.setState({ value: e.currentTarget.value }) }}
-          onBlur={() => { onStorage(); this.setState({ active: true }) }}
+          onСhange={(e) => { this.setState({ value: e.currentTarget.value }) }}
+          onBlur={() => {this.onStorage(); this.setState({ active: true })}}
           onDoubleClick={() => { this.setState({ active: false }) }}
           transparent
           disabled={this.state.active}
-          key={keys}
-          defaultValue={localStorage.getItem(keys)} />
+          key={this.props.keys}
+          defaultValue={localStorage.getItem(this.props.keys)} />
       </>
 
     );
