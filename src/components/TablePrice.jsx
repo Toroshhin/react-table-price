@@ -1,33 +1,46 @@
 import React, { Component } from 'react';
-import { Container, Table, Input } from 'semantic-ui-react'
+import { Container, Table } from 'semantic-ui-react'
 import state from '../store'
 import { view } from '@risingstack/react-easy-state'
 import InputPrice from "./InputPrice"
+import DropDown from './DropDown'
 
 class TablePrice extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
   render() {
     return (
       <Container>
         <Table celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Период участия в проекте</Table.HeaderCell>
-              <Table.HeaderCell>Общая численность студентов,обучающихся в ОО</Table.HeaderCell>
-              <Table.HeaderCell>Стоимость (руб.)</Table.HeaderCell>
+              <Table.HeaderCell >Уровень образования:</Table.HeaderCell>
+              <Table.HeaderCell colSpan={3}>
+                <DropDown values={state.selectEducation} />
+              </Table.HeaderCell>
             </Table.Row>
             <Table.Row>
-              <Table.HeaderCell colSpan={3} textAlign='center'>Name</Table.HeaderCell>
+              <Table.HeaderCell>Проект:</Table.HeaderCell>
+              <Table.HeaderCell colSpan={3}><DropDown values={state.selectEducation[state.activeSelectEducation].project} /></Table.HeaderCell>
+            </Table.Row>
+            <Table.Row>
+              <Table.HeaderCell> </Table.HeaderCell>
+              <Table.HeaderCell>Один модуль</Table.HeaderCell>
+              <Table.HeaderCell>Два модуля</Table.HeaderCell>
+              <Table.HeaderCell>Три модуля</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
-            <Table.Row>
-              <Table.Cell rowSpan={7}>Общая клетка</Table.Cell>
-            </Table.Row>
             {state.tablePrice.map(tablePriceCall => (
               <Table.Row key={tablePriceCall.id}>
                 <Table.Cell>{tablePriceCall.people}</Table.Cell>
-                <Table.Cell><InputPrice keys={tablePriceCall.id} /></Table.Cell>
+                <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + tablePriceCall.id + '1'} /></Table.Cell>
+                <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + tablePriceCall.id + '2 '} /></Table.Cell>
+                <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + tablePriceCall.id + '3'} /></Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
