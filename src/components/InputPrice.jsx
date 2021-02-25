@@ -8,10 +8,10 @@ class InputPrice extends Component {
     super(props);
     this.state = {
       active: true,
-      value: '1'
+      value: ''
     };
     const { keys } = this.props;
-  } 
+  }
 
   onStorage = () => (
     localStorage.setItem(this.props.keys, this.state.value)
@@ -21,8 +21,8 @@ class InputPrice extends Component {
     return (
       <>
         <Input
-          onСhange={(e) => { this.setState({ value: e.currentTarget.value }) }}
-          onBlur={() => {this.onStorage(); this.setState({ active: true })}}
+          onChange={(e) => { this.setState({ value: e.currentTarget.value }) }}
+          onBlur={() => { this.onStorage(); this.setState({ active: true }) }}
           onDoubleClick={() => { this.setState({ active: false }) }}
           transparent
           disabled={this.state.active}
