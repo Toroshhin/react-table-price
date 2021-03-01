@@ -21,6 +21,10 @@ class InputPrice extends Component {
     return (
       <>
         <Input
+          style={{
+            cursor: 'pointer'
+          }}
+          type={'number'}
           onChange={(e) => { this.setState({ value: e.currentTarget.value }) }}
           onBlur={() => { this.onStorage(); this.setState({ active: true }) }}
           onDoubleClick={() => { this.setState({ active: false }) }}
