@@ -27,7 +27,8 @@ class InputPrice extends Component {
           type={'number'}
           onChange={(e) => { this.setState({ value: e.currentTarget.value }) }}
           onBlur={() => { this.onStorage(); this.setState({ active: true }) }}
-          onDoubleClick={() => { this.setState({ active: false }) }}
+          // onDoubleClick={() => { this.setState({ active: false }); console.log('Двойной клик'); }}
+          onClick={() => { this.setState({ active: false }); console.log('Клик'); }}
           transparent
           disabled={this.state.active}
           key={this.props.keys}
