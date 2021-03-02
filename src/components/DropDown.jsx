@@ -45,7 +45,7 @@ class DropDown extends Component {
 
 
 DropDown.propTypes = {
-  values: PropTypes.object,
+  values: PropTypes.array,
 };
 
 
