@@ -7,12 +7,12 @@ class InputPrice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false,
+      active: true,
       value: ''
     }
     const { keys } = this.props
-    // this.textInput = React.createRef()
-    // this.focusTextInput = this.focusTextInput.bind(this)
+    this.textInput = React.createRef()
+    this.focusTextInput = this.focusTextInput.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
@@ -27,17 +27,23 @@ class InputPrice extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.active == false) {
+      this.textInput.current.focus()
+    }
+  }
 
 
 
-  // focusTextInput() {
-  //   this.textInput.current.focus()
-  //   this.setState({ active: false })
-  // }
+
+  focusTextInput() {
+
+    this.setState({ active: false })
+  }
 
   render() {
     return (
-      <div /*onClick={this.focusTextInput}*/>
+      <div onClick={this.focusTextInput}>
         <Input
           style={{
             cursor: 'pointer'
@@ -48,7 +54,7 @@ class InputPrice extends Component {
           onBlur={() => { this.onStorage(); this.setState({ active: true }) }}
           transparent
           disabled={this.state.active}
-          // ref={this.textInput}
+          ref={this.textInput}
           key={this.props.keys}
           defaultValue={localStorage.getItem(this.props.keys)} />
       </div >
