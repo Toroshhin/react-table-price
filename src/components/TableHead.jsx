@@ -10,13 +10,13 @@ class TableHead extends Component {
     return (
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell >Уровень образования:</Table.HeaderCell>
-          <Table.HeaderCell colSpan={3}>
+          <Table.HeaderCell width={3} >Уровень образования:</Table.HeaderCell>
+          <Table.HeaderCell >
             <DropDown values={state.selectEducation} />
           </Table.HeaderCell>
         </Table.Row>
         <Table.Row>
-          <Table.HeaderCell>Проект:</Table.HeaderCell>
+          <Table.HeaderCell width={3}>Проект:</Table.HeaderCell>
           <Table.HeaderCell colSpan={3}><DropDown values={state.selectEducation[state.activeSelectEducation].project} /></Table.HeaderCell>
         </Table.Row>
       </Table.Header>
