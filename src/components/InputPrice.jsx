@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react'
+import './InputPrice.css'
 
 
 class InputPrice extends Component {
@@ -33,11 +34,7 @@ class InputPrice extends Component {
     }
   }
 
-
-
-
   focusTextInput() {
-
     this.setState({ active: false })
   }
 
@@ -63,11 +60,9 @@ class InputPrice extends Component {
   }
 }
 
-
 InputPrice.propTypes = {
   value: PropTypes.number,
   key: PropTypes.number
 };
-
 
 export default InputPrice;
