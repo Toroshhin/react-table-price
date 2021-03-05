@@ -11,18 +11,21 @@ class TableBody extends Component {
   render() {
     return (
       <Table.Body>
+
         <Table.Row>
           <Table.HeaderCell> </Table.HeaderCell>
-          <Table.HeaderCell>Один модуль</Table.HeaderCell>
-          <Table.HeaderCell>Два модуля</Table.HeaderCell>
-          <Table.HeaderCell>Три модуля</Table.HeaderCell>
+          {state.selectEducation[state.activeSelectEducation].project[state.activeSelectProject].tableHead.map(tableHeads => (
+            <Table.HeaderCell > {tableHeads} </Table.HeaderCell>
+          ))}
         </Table.Row>
-        {state.tablePrice.map(tablePriceCall => (
+
+
+        {state.selectEducation[state.activeSelectEducation].tableBody.map(tablePriceCall => (
           <Table.Row key={tablePriceCall.id}>
             <Table.Cell>{tablePriceCall.people}</Table.Cell>
-            <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + tablePriceCall.id + '1'} /></Table.Cell>
-            <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + tablePriceCall.id + '2 '} /></Table.Cell>
-            <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + tablePriceCall.id + '3'} /></Table.Cell>
+            {state.selectEducation[state.activeSelectEducation].project[state.activeSelectProject].tableHead.map(tableHeads => (
+              <Table.Cell><InputPrice keys={String(state.activeSelectEducation) + String(state.activeSelectProject) + String(tablePriceCall.id) + tableHeads.length} /></Table.Cell>
+            ))}
           </Table.Row>
         ))}
       </Table.Body>
